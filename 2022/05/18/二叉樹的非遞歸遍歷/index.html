@@ -3,20 +3,21 @@
 <head>
   <meta charset="utf-8">
   <title>二叉樹的非遞歸遍歷 | Scintillium</title>
-  <meta name="keywords" content=" leetcode ">
+  <meta name="keywords" content=" leetcode , 二叉樹 ">
   <meta name="description" content="二叉樹的非遞歸遍歷 | Scintillium">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="這裏是內容">
+<meta name="description" content="二叉樹的遍歷算是非常常見，非常基礎的算法題，也有很多題是根據各種樹的遍歷而改編過來的。二叉樹的遍歷，可以通過簡單的遞歸方法來實現。然而有些面試官會別出心裁，會來問一下用非遞歸的方式，是如何來實現。說實話第一次遇到這中問題確實把我難住了，明明是常見的問題，卻突然變的十分陌生，不知從何下手。 問題描述鏈接：  leetcode 94. 二叉树的中序遍历 leetcode 144. 二叉树的前序遍历 l">
 <meta property="og:type" content="article">
 <meta property="og:title" content="二叉樹的非遞歸遍歷">
 <meta property="og:url" content="http://scintillium.github.io/2022/05/18/%E4%BA%8C%E5%8F%89%E6%A8%B9%E7%9A%84%E9%9D%9E%E9%81%9E%E6%AD%B8%E9%81%8D%E6%AD%B7/index.html">
 <meta property="og:site_name" content="Scintillium">
-<meta property="og:description" content="這裏是內容">
+<meta property="og:description" content="二叉樹的遍歷算是非常常見，非常基礎的算法題，也有很多題是根據各種樹的遍歷而改編過來的。二叉樹的遍歷，可以通過簡單的遞歸方法來實現。然而有些面試官會別出心裁，會來問一下用非遞歸的方式，是如何來實現。說實話第一次遇到這中問題確實把我難住了，明明是常見的問題，卻突然變的十分陌生，不知從何下手。 問題描述鏈接：  leetcode 94. 二叉树的中序遍历 leetcode 144. 二叉树的前序遍历 l">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-05-18T02:32:20.637Z">
-<meta property="article:modified_time" content="2022-05-18T03:43:59.481Z">
+<meta property="article:modified_time" content="2022-05-19T04:03:42.690Z">
 <meta property="article:author" content="Scintillium">
 <meta property="article:tag" content="leetcode">
+<meta property="article:tag" content="二叉樹">
 <meta name="twitter:card" content="summary">
 
 
@@ -24,7 +25,7 @@
 
 <link href="/css/style.css?v=1.1.0" rel="stylesheet">
 
-<link href="/css/hl_theme/github.css?v=1.1.0" rel="stylesheet">
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
 
 <link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
 
@@ -178,7 +179,7 @@
     </div>
 </div>
 <input type="hidden" id="yelog_site_posts_number" value="1">
-<input type="hidden" id="yelog_site_word_count" value="5">
+<input type="hidden" id="yelog_site_word_count" value="2k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -222,6 +223,10 @@
     <div class="tag-wrapper">
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>二叉樹</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>leetcode</a>
             </li>
         
@@ -234,7 +239,7 @@
         
         <a  class="All 算法 "
            href="/2022/05/18/%E4%BA%8C%E5%8F%89%E6%A8%B9%E7%9A%84%E9%9D%9E%E9%81%9E%E6%AD%B8%E9%81%8D%E6%AD%B7/"
-           data-tag="leetcode"
+           data-tag="leetcode,二叉樹"
            data-author="" >
             <span class="post-title" title="二叉樹的非遞歸遍歷">二叉樹的非遞歸遍歷</span>
             <span class="post-date" title="2022-05-18 10:32:20">2022/05/18</span>
@@ -280,17 +285,19 @@
             
             <a class="color4">leetcode</a>
             
+            <a class="color4">二叉樹</a>
+            
         </span>
         
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2022-05-18 11:43:59'>2022-05-18 10:32</time>
+            Created At : <time class="date" title='Updated At: 2022-05-19 12:03:42'>2022-05-18 10:32</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:5</span>
+        <span>Count:2k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -320,7 +327,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%95%8F%E9%A1%8C%E6%8F%8F%E8%BF%B0"><span class="toc-text">問題描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%81%9E%E6%AD%B8%E8%A7%A3%E6%B3%95"><span class="toc-text">遞歸解法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%9E%E9%81%9E%E6%AD%B8%E8%A7%A3%E6%B3%95"><span class="toc-text">非遞歸解法</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -336,7 +343,158 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>這裏是內容</p>
+        <p>二叉樹的遍歷算是非常常見，非常基礎的算法題，也有很多題是根據各種樹的遍歷而改編過來的。二叉樹的遍歷，可以通過簡單的遞歸方法來實現。然而有些面試官會別出心裁，會來問一下用非遞歸的方式，是如何來實現。說實話第一次遇到這中問題確實把我難住了，明明是常見的問題，卻突然變的十分陌生，不知從何下手。</p>
+<h3 id="問題描述"><a href="#問題描述" class="headerlink" title="問題描述"></a>問題描述</h3><p>鏈接：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/binary-tree-inorder-traversal/">leetcode 94. 二叉树的中序遍历</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/binary-tree-preorder-traversal/">leetcode 144. 二叉树的前序遍历</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/binary-tree-postorder-traversal/">leetcode 145. 二叉树的后序遍历</a></li>
+</ul>
+<p>給定一個二叉數，其結點的結構爲</p>
+<pre><code class="C++">struct TreeNode &#123;
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode() : val(0), left(nullptr), right(nullptr) &#123;&#125;
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr) &#123;&#125;
+    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) &#123;&#125;
+&#125;;   
+</code></pre>
+<p>然後再給你二叉樹的根結點root，請返回它結點值的前序遍歷&#x2F;中序遍歷&#x2F;後序遍歷。</p>
+<h3 id="遞歸解法"><a href="#遞歸解法" class="headerlink" title="遞歸解法"></a>遞歸解法</h3><p>以中序遍歷爲例，在中序遍歷函數內調用遞歸函數<code>traversal()</code></p>
+<pre><code class="C++">vector&lt;int&gt; inorderTraversal(TreeNode* root) &#123;
+    vector&lt;int&gt; res;  //保存遍歷序列
+    traversal(root, res); 
+    return res;
+&#125;
+</code></pre>
+<p>其中中序遍歷的<code>traversal()</code>的寫法爲：</p>
+<pre><code class="C++">void traversal(TreeNode* cur, vector&lt;int&gt;&amp; res) &#123;
+    if (cur == nullptr) return; // 終止
+    traversal(cur-&gt;left, res);  // 左子樹
+    res.push_back(cur-&gt;val);    // 中間結點
+    traversal(cur-&gt;right, res); // 右子樹
+&#125;
+</code></pre>
+<p>舉一反三，可以得到前序遍歷的<code>traversal()</code>的寫法爲：</p>
+<pre><code class="C++">void traversal(TreeNode* cur, vector&lt;int&gt;&amp; res) &#123;
+    if (cur == nullptr) return; // 終止
+    res.push_back(cur-&gt;val);    // 中間結點
+    traversal(cur-&gt;left, res);  // 左子樹
+    traversal(cur-&gt;right, res); // 右子樹
+&#125;  
+</code></pre>
+<p>後序遍歷爲：</p>
+<pre><code class="C++">void traversal(TreeNode* cur, vector&lt;int&gt;&amp; res) &#123;
+    if (cur == nullptr) return; // 終止
+    traversal(cur-&gt;left, res);  // 左子樹
+    traversal(cur-&gt;right, res); // 右子樹
+    res.push_back(cur-&gt;val);    // 中間結點
+&#125;  
+</code></pre>
+<h3 id="非遞歸解法"><a href="#非遞歸解法" class="headerlink" title="非遞歸解法"></a>非遞歸解法</h3><p>在遞歸的情況下，程序需要借助棧來實現函數調用。每次調用遞歸函數都會將參數值和返回地址壓入棧中。因爲棧遵循First in Last out， 故而遞歸函數執行完之後可以返回原來的位置。<br>顯然用非遞歸的方式實現二叉樹的遍歷需要顯示地借助於棧這個數據結構來實現函數調用棧的過程。</p>
+<p>這樣一想這個問題其實並不難，前序遍歷可以用如下的方式實現：</p>
+<pre><code class="C++">vector&lt;int&gt; preorderTraversal(TreeNode* root) &#123;
+        stack&lt;TreeNode*&gt; stk;       //借助棧來實現遍歷
+        vector&lt;int&gt; res;
+        if (root == bullptr) return res;
+        st.push(root);
+        TreeNode * node;
+        while (!st.empty()) &#123;
+            node = st.top(); st.pop();
+            res.push_back(node-&gt;val);           //記錄根結點
+            if (node-&gt;right) st.push(node-&gt;right);  //將左子結點壓入棧
+            if (node-&gt;left)  st.push(node-&gt;left);   //將右子結點壓入棧
+        &#125;
+        return res;
+</code></pre>
+<p>然後，我們突然發現這種寫法似乎只適用於前序遍歷了，如果按照遞歸的慣性思維, 將上述代碼的循環部分改爲</p>
+<pre><code class="C++">            if (node-&gt;right) st.push(node-&gt;right);  
+            res.push_back(node-&gt;val);  
+            if (node-&gt;left)  st.push(node-&gt;left);
+</code></pre>
+<p>來作爲中序遍歷的實現，又或者是</p>
+<pre><code class="C++">            if (node-&gt;right) st.push(node-&gt;right);  
+            if (node-&gt;left)  st.push(node-&gt;left);
+            res.push_back(node-&gt;val); 
+</code></pre>
+<p>作爲後序遍歷的實現。然而運行程序會發現返回的結果都是前序遍歷的結果。爲什麼會這樣呢？</p>
+<p>我們再來重新回顧一下中序&#x2F;前序&#x2F;後序遍歷的遞歸實現，看看問題出在哪裏。首先在遞歸思想當中，將整個問題歸納爲幾個重複的子過程，將這個過程封裝爲函數重複調用。以中序中序遍歷爲例，它可以看做 L（中序遍歷的左半部分）+ M（根結點）+ R（中序遍歷的右半部分）。一般解釋爲先遍歷左半部分，然後再遍歷根結點，再遍歷右半部分。這種解釋雖然雖然正確，但是含混不清。必須指出的是，這種先後順序是指時間上的順序。我們來看中序遍歷的遞歸實現</p>
+<pre><code class="C++"> void traversal(TreeNode* cur, vector&lt;int&gt;&amp; res) &#123;
+    if (cur == nullptr) return; // 終止
+    traversal(cur-&gt;left, res);  // 左子樹
+    res.push_back(cur-&gt;val);    // 中間結點
+    traversal(cur-&gt;right, res); // 右子樹
+&#125;
+</code></pre>
+<p>在一次調用<code>traversal</code>當中，如果沒有遇到終止條件，<code>traversal(cur-&gt;left, res);</code>執行完成時，L就已經完成了，然後再添加M，再執行<code>traversal(cur-&gt;left, res);</code>時R也全部完成了，最終結果就是L+M+R。然後我們再來看一開始前序遍歷的非遞歸實現的循環部分：</p>
+<pre><code class="C++">while (!st.empty()) &#123;
+    node = st.top(); st.pop();
+    res.push_back(node-&gt;val);           //1
+    if (node-&gt;right) st.push(node-&gt;right);  //2
+    if (node-&gt;left)  st.push(node-&gt;left);   //3
+&#125;
+</code></pre>
+<p>這個循環記錄了每次循環中從棧中彈出的元素，也意味着，無論如何調換語句1，2，3的順序，這次循環只會記錄此次的根結點，而左右子結點只會在後面的循環當中被記錄，根結點訪問時間先於左右子結點，故而無論如何調換順序都只會得到前序遍歷。所以試圖實現中序遍歷的話，要確保訪問記錄根結點M的時候，L已經完成遍歷，訪問M之後當然就是只剩下R的遍歷。</p>
+<p>無論是遞歸實現還是非遞歸實現，樹的遍歷過程都可以視爲一個深度優先搜索（DFS）的過程。爲了實現中序遍歷，我們必須顯示地執行完其左邊的遍歷過程，而非將所有結點都不分左右地放入棧中。例如上述的中序遍歷的非遞歸實現，每次從棧中彈出的結點，處理上都是相同的，我們也無從判斷其在遍歷過程當中所處的位置，不能區分左子樹和右子樹，所以就不能在合適的時機記錄中序遍歷的結點。中序遍歷的非遞歸實現如下：</p>
+<pre><code class="C++">vector&lt;int&gt; inorderTraversal(TreeNode* root) &#123;
+    stack&lt;TreeNode *&gt; stk;
+    vector&lt;int&gt; res;
+    TreeNode * cur = root;
+    while(!stk.empty() || cur)&#123;
+        while(cur)&#123;      //最左深度優先，全部壓入棧中
+            stk.push(cur);
+            cur = cur-&gt;left;
+        &#125;
+        if(!stk.empty())&#123; 
+            cur = stk.top(); stk.pop(); //此時出棧的元素
+            res.push_back(cur-&gt;val);    //此時其左子樹已經全部遍歷完成
+            cur = cur-&gt;right;           //壓入右子樹
+        &#125;
+    &#125;
+    return res;
+&#125;
+</code></pre>
+<p>上面我們說到，其實三種遍歷都是DFS，所以前序遍歷也能應用上面的代碼，只不過需要改變記錄結果的位置。中序遍歷記錄的時機是其左邊所有結點都已經出棧的時候，而前序遍歷則是記錄在每個結點入棧的時候，所以代碼實現如下：</p>
+<pre><code class="C++">vector&lt;int&gt; inorderTraversal(TreeNode* root) &#123;
+    stack&lt;TreeNode *&gt; stk;
+    vector&lt;int&gt; res;
+    TreeNode * cur = root;
+    while(!stk.empty() || cur)&#123;
+        while(cur)&#123;     
+            stk.push(cur);
+            res.push_back(cur-&gt;val);   //此時記錄可以保證其子孫結點都出現在cur的後面
+            cur = cur-&gt;left;
+        &#125;
+        if(!stk.empty())&#123; 
+            cur = stk.top(); stk.pop();  
+            cur = cur-&gt;right;           
+        &#125;
+    &#125;
+    return res;
+&#125;
+</code></pre>
+<p>那麼後序遍歷是如何實現呢？我們知道前序遍歷是M+L+R，其實我們將前序遍歷的最左深度優先改爲最右深度優先，得到的序列將是M+R+L。同時我們也知道後序遍歷爲L+R+M，正好和M+R+L逆序，所以後序遍歷可以這樣實現：</p>
+<pre><code class="C++">vector&lt;int&gt; inorderTraversal(TreeNode* root) &#123;
+    stack&lt;TreeNode *&gt; stk;
+    vector&lt;int&gt; res;
+    TreeNode * cur = root;
+    while(!stk.empty() || cur)&#123;
+        while(cur)&#123;     
+            stk.push(cur);
+            cur = cur-&gt;right;  //最左改成最右
+            res.push_back(cur-&gt;val); 
+        &#125;
+        if(!stk.empty())&#123; 
+            cur = stk.top(); stk.pop();   
+            cur = cur-&gt;left;           
+        &#125;
+    &#125;
+    reverse(res.begin(), res.end()); //翻轉
+    return res;
+&#125;
+</code></pre>
+<p>至此三種遍歷的非遞歸實現得到了一種統一的寫法。</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 轉載請聲明來源，歡迎評論區指正 </span>
@@ -360,7 +518,7 @@
             admin: [''],
             id: decodeURI(location.pathname),
             distractionFreeMode: 'false',
-            language: 'zh-TW',
+            language: 'en',
             perPage: parseInt('10',10)
         })
         gitalk.render('comments')
@@ -505,6 +663,16 @@
     /*文章列表背景图*/
     
 
+    
+    #post .pjax article :not(pre) > code {
+        color: #24292e;
+        font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
+        background-color: rgba(27,31,35,.05);
+        border-radius: 3px;
+        font-size: 85%;
+        margin: 0;
+        padding: .2em .4em;
+    }
     
 </style>
 
