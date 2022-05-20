@@ -6,18 +6,18 @@
   <meta name="keywords" content="">
   <meta name="description" content="Scintillium">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="二叉樹的遍歷算是非常常見，非常基礎的算法題，也有很多題是根據各種樹的遍歷而改編過來的。二叉樹的遍歷，可以通過簡單的遞歸方法來實現。然而有些面試官會別出心裁，會來問一下用非遞歸的方式，是如何來實現。說實話第一次遇到這中問題確實把我難住了，明明是常見的問題，卻突然變的十分陌生，不知從何下手。 問題描述鏈接：  leetcode 94. 二叉树的中序遍历 leetcode 144. 二叉树的前序遍历 l">
+<meta name="description" content="大學時老師推薦的書單裏有一本書《商君書》，最近找來看了一下，我原以爲就像普通的諸子百家，例如《莊子》，《孟子》，《呂氏春秋》一樣，一堆正確的廢話。讀完之後，只感覺這本書有股邪氣。我甚至懷疑我讀到是被惡搞的版本。然而這本書就是這麼赤裸裸地邪惡。原書有頗多章節，我稍微總結了就是： 一是弱民，書中說“民强國弱，民弱國强。治國之道，首在弱民”。樸則弱，淫則强；弱則軌，淫則越志；弱則有用，越志則强。” 意思">
 <meta property="og:type" content="article">
-<meta property="og:title" content="二叉樹的非遞歸遍歷">
-<meta property="og:url" content="http://scintillium.github.io/2022/05/18/%E4%BA%8C%E5%8F%89%E6%A8%B9%E7%9A%84%E9%9D%9E%E9%81%9E%E6%AD%B8%E9%81%8D%E6%AD%B7/index.html">
+<meta property="og:title" content="《商君書》，秦國的三民主義">
+<meta property="og:url" content="http://scintillium.github.io/2022/05/20/%E7%A7%A6%E5%9C%8B%E7%9A%84%E4%B8%89%E6%B0%91%E4%B8%BB%E7%BE%A9/index.html">
 <meta property="og:site_name" content="Scintillium">
-<meta property="og:description" content="二叉樹的遍歷算是非常常見，非常基礎的算法題，也有很多題是根據各種樹的遍歷而改編過來的。二叉樹的遍歷，可以通過簡單的遞歸方法來實現。然而有些面試官會別出心裁，會來問一下用非遞歸的方式，是如何來實現。說實話第一次遇到這中問題確實把我難住了，明明是常見的問題，卻突然變的十分陌生，不知從何下手。 問題描述鏈接：  leetcode 94. 二叉树的中序遍历 leetcode 144. 二叉树的前序遍历 l">
+<meta property="og:description" content="大學時老師推薦的書單裏有一本書《商君書》，最近找來看了一下，我原以爲就像普通的諸子百家，例如《莊子》，《孟子》，《呂氏春秋》一樣，一堆正確的廢話。讀完之後，只感覺這本書有股邪氣。我甚至懷疑我讀到是被惡搞的版本。然而這本書就是這麼赤裸裸地邪惡。原書有頗多章節，我稍微總結了就是： 一是弱民，書中說“民强國弱，民弱國强。治國之道，首在弱民”。樸則弱，淫則强；弱則軌，淫則越志；弱則有用，越志則强。” 意思">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-05-18T02:32:20.637Z">
-<meta property="article:modified_time" content="2022-05-19T04:03:42.690Z">
+<meta property="article:published_time" content="2022-05-20T10:46:56.625Z">
+<meta property="article:modified_time" content="2022-05-20T14:49:32.677Z">
 <meta property="article:author" content="Scintillium">
-<meta property="article:tag" content="leetcode">
-<meta property="article:tag" content="二叉樹">
+<meta property="article:tag" content="歷史">
+<meta property="article:tag" content="政治">
 <meta name="twitter:card" content="summary">
 
 
@@ -146,10 +146,24 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(1)</small>
+                <small>(2)</small>
             
         </div>
     </li>
+    
+        
+            
+                <li>
+                    <div data-rel="讀書">
+                        
+                        讀書
+                        <small>(1)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
     
         
             
@@ -178,8 +192,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="1">
-<input type="hidden" id="yelog_site_word_count" value="2k">
+<input type="hidden" id="yelog_site_posts_number" value="2">
+<input type="hidden" id="yelog_site_word_count" value="3.6k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -227,6 +241,14 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>歷史</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>政治</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>leetcode</a>
             </li>
         
@@ -236,6 +258,14 @@
 
     
     <nav id="title-list-nav">
+        
+        <a  class="All 讀書 "
+           href="/2022/05/20/%E7%A7%A6%E5%9C%8B%E7%9A%84%E4%B8%89%E6%B0%91%E4%B8%BB%E7%BE%A9/"
+           data-tag="歷史,政治"
+           data-author="" >
+            <span class="post-title" title="《商君書》，秦國的三民主義">《商君書》，秦國的三民主義</span>
+            <span class="post-date" title="2022-05-20 18:46:56">2022/05/20</span>
+        </a>
         
         <a  class="All 算法 "
            href="/2022/05/18/%E4%BA%8C%E5%8F%89%E6%A8%B9%E7%9A%84%E9%9D%9E%E9%81%9E%E6%AD%B8%E9%81%8D%E6%AD%B7/"
