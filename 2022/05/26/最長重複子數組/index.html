@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>二叉樹的非遞歸遍歷 | Scintillium</title>
-  <meta name="keywords" content=" leetcode , 二叉樹 ">
-  <meta name="description" content="二叉樹的非遞歸遍歷 | Scintillium">
+  <title>leetcode 718. 最長重複子數組 | Scintillium</title>
+  <meta name="keywords" content=" 數組 , 動態規劃 , 滑動窗口 , 二分查找 ">
+  <meta name="description" content="leetcode 718. 最長重複子數組 | Scintillium">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="這道題雖然並不難，但我覺得學習研究，在於其有多種解法，且都是常用的思路，卻都能應用在同一個問題上。這種解法靈活的算法題非常適合我們來一次性複習各種解題思路以及他們的應用和寫法。 問題描述鏈接  718. 最长重复子数组兩個整數數組nums1和nums2，返回兩個數組中公共的，長度最長的子數組的長度。  划動窗口解法一種直觀的解決方法就是，我們假想兩個數組是我們日常使用的兩把直尺，然後尺子上的刻度格">
 <meta property="og:type" content="article">
@@ -289,9 +289,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-二叉樹的非遞歸遍歷" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-最長重複子數組" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">二叉樹的非遞歸遍歷</h1>
+        <h1 class="article-title">leetcode 718. 最長重複子數組</h1>
     
     <div class="article-meta">
         
@@ -309,21 +309,25 @@
         <span class="tag">
             <i class="iconfont icon-tag"></i>
             
-            <a class="color4">leetcode</a>
+            <a class="color3">數組</a>
             
-            <a class="color4">二叉樹</a>
+            <a class="color5">動態規劃</a>
+            
+            <a class="color5">滑動窗口</a>
+            
+            <a class="color5">二分查找</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2022-05-19 12:03:42'>2022-05-18 10:32</time>
+            Created At : <time class="date" title='Updated At: 2022-05-26 23:15:43'>2022-05-26 11:54</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:2k</span>
+        <span>Count:1.9k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -353,7 +357,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%95%8F%E9%A1%8C%E6%8F%8F%E8%BF%B0"><span class="toc-text">問題描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%81%9E%E6%AD%B8%E8%A7%A3%E6%B3%95"><span class="toc-text">遞歸解法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%9E%E9%81%9E%E6%AD%B8%E8%A7%A3%E6%B3%95"><span class="toc-text">非遞歸解法</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%95%8F%E9%A1%8C%E6%8F%8F%E8%BF%B0"><span class="toc-text">問題描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%92%E5%8B%95%E7%AA%97%E5%8F%A3%E8%A7%A3%E6%B3%95"><span class="toc-text">划動窗口解法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8B%95%E6%85%8B%E8%A6%8F%E5%8A%83"><span class="toc-text">動態規劃</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%93%88%E5%B8%8C-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE"><span class="toc-text">哈希+二分查找</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -369,158 +373,175 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>二叉樹的遍歷算是非常常見，非常基礎的算法題，也有很多題是根據各種樹的遍歷而改編過來的。二叉樹的遍歷，可以通過簡單的遞歸方法來實現。然而有些面試官會別出心裁，會來問一下用非遞歸的方式，是如何來實現。說實話第一次遇到這中問題確實把我難住了，明明是常見的問題，卻突然變的十分陌生，不知從何下手。</p>
-<h3 id="問題描述"><a href="#問題描述" class="headerlink" title="問題描述"></a>問題描述</h3><p>鏈接：</p>
+        <p>這道題雖然並不難，但我覺得學習研究，在於其有多種解法，且都是常用的思路，卻都能應用在同一個問題上。這種解法靈活的算法題非常適合我們來一次性複習各種解題思路以及他們的應用和寫法。</p>
+<h3 id="問題描述"><a href="#問題描述" class="headerlink" title="問題描述"></a>問題描述</h3><p>鏈接</p>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/binary-tree-inorder-traversal/">leetcode 94. 二叉树的中序遍历</a></li>
-<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/binary-tree-preorder-traversal/">leetcode 144. 二叉树的前序遍历</a></li>
-<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/binary-tree-postorder-traversal/">leetcode 145. 二叉树的后序遍历</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/maximum-length-of-repeated-subarray/">718. 最长重复子数组</a><br>兩個整數數組nums1和nums2，返回兩個數組中公共的，長度最長的子數組的長度。</li>
 </ul>
-<p>給定一個二叉數，其結點的結構爲</p>
-<pre><code class="C++">struct TreeNode &#123;
-    int val;
-    TreeNode *left;
-    TreeNode *right;
-    TreeNode() : val(0), left(nullptr), right(nullptr) &#123;&#125;
-    TreeNode(int x) : val(x), left(nullptr), right(nullptr) &#123;&#125;
-    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) &#123;&#125;
-&#125;;   
-</code></pre>
-<p>然後再給你二叉樹的根結點root，請返回它結點值的前序遍歷&#x2F;中序遍歷&#x2F;後序遍歷。</p>
-<h3 id="遞歸解法"><a href="#遞歸解法" class="headerlink" title="遞歸解法"></a>遞歸解法</h3><p>以中序遍歷爲例，在中序遍歷函數內調用遞歸函數<code>traversal()</code></p>
-<pre><code class="C++">vector&lt;int&gt; inorderTraversal(TreeNode* root) &#123;
-    vector&lt;int&gt; res;  //保存遍歷序列
-    traversal(root, res); 
-    return res;
-&#125;
-</code></pre>
-<p>其中中序遍歷的<code>traversal()</code>的寫法爲：</p>
-<pre><code class="C++">void traversal(TreeNode* cur, vector&lt;int&gt;&amp; res) &#123;
-    if (cur == nullptr) return; // 終止
-    traversal(cur-&gt;left, res);  // 左子樹
-    res.push_back(cur-&gt;val);    // 中間結點
-    traversal(cur-&gt;right, res); // 右子樹
-&#125;
-</code></pre>
-<p>舉一反三，可以得到前序遍歷的<code>traversal()</code>的寫法爲：</p>
-<pre><code class="C++">void traversal(TreeNode* cur, vector&lt;int&gt;&amp; res) &#123;
-    if (cur == nullptr) return; // 終止
-    res.push_back(cur-&gt;val);    // 中間結點
-    traversal(cur-&gt;left, res);  // 左子樹
-    traversal(cur-&gt;right, res); // 右子樹
-&#125;  
-</code></pre>
-<p>後序遍歷爲：</p>
-<pre><code class="C++">void traversal(TreeNode* cur, vector&lt;int&gt;&amp; res) &#123;
-    if (cur == nullptr) return; // 終止
-    traversal(cur-&gt;left, res);  // 左子樹
-    traversal(cur-&gt;right, res); // 右子樹
-    res.push_back(cur-&gt;val);    // 中間結點
-&#125;  
-</code></pre>
-<h3 id="非遞歸解法"><a href="#非遞歸解法" class="headerlink" title="非遞歸解法"></a>非遞歸解法</h3><p>在遞歸的情況下，程序需要借助棧來實現函數調用。每次調用遞歸函數都會將參數值和返回地址壓入棧中。因爲棧遵循First in Last out， 故而遞歸函數執行完之後可以返回原來的位置。<br>顯然用非遞歸的方式實現二叉樹的遍歷需要顯示地借助於棧這個數據結構來實現函數調用棧的過程。</p>
-<p>這樣一想這個問題其實並不難，前序遍歷可以用如下的方式實現：</p>
-<pre><code class="C++">vector&lt;int&gt; preorderTraversal(TreeNode* root) &#123;
-        stack&lt;TreeNode*&gt; stk;       //借助棧來實現遍歷
-        vector&lt;int&gt; res;
-        if (root == bullptr) return res;
-        st.push(root);
-        TreeNode * node;
-        while (!st.empty()) &#123;
-            node = st.top(); st.pop();
-            res.push_back(node-&gt;val);           //記錄根結點
-            if (node-&gt;right) st.push(node-&gt;right);  //將左子結點壓入棧
-            if (node-&gt;left)  st.push(node-&gt;left);   //將右子結點壓入棧
+<h3 id="划動窗口解法"><a href="#划動窗口解法" class="headerlink" title="划動窗口解法"></a>划動窗口解法</h3><p>一種直觀的解決方法就是，我們假想兩個數組是我們日常使用的兩把直尺，然後尺子上的刻度格子是數組，然後我們滑動兩把直尺將刻度線對齊。在重疊的部分查詢最長的重複子串。假設數組重複的部分起始下標分別爲<code>start1</code>和<code>start2</code>，則求重疊部分的最長重複子數組的函數可寫爲：</p>
+<pre><code class="C++">int maxLength(vector&lt;int&gt;&amp; nums1, int start1, vector&lt;int&gt;&amp; nums2, int start2)&#123;
+        int res = 0; // 記錄最長的重複子數組長度
+        int cur = 0; // 以當前位置爲末位的最長重複子數組長度
+        int i = 0;  // 重疊部分的相對偏移量來遍歷重疊部分
+        while(start1 + i &lt; nums1.size() &amp;&amp; start2 + i &lt; nums2.size())&#123;    //循環條件
+            if(nums1[start1+i] == nums2[start2+i])++cur;                  
+            else cur = 0;
+            res = max(res,cur);                                           //記錄最長的記錄
+            ++i;
         &#125;
         return res;
-</code></pre>
-<p>然後，我們突然發現這種寫法似乎只適用於前序遍歷了，如果按照遞歸的慣性思維, 將上述代碼的循環部分改爲</p>
-<pre><code class="C++">            if (node-&gt;right) st.push(node-&gt;right);  
-            res.push_back(node-&gt;val);  
-            if (node-&gt;left)  st.push(node-&gt;left);
-</code></pre>
-<p>來作爲中序遍歷的實現，又或者是</p>
-<pre><code class="C++">            if (node-&gt;right) st.push(node-&gt;right);  
-            if (node-&gt;left)  st.push(node-&gt;left);
-            res.push_back(node-&gt;val); 
-</code></pre>
-<p>作爲後序遍歷的實現。然而運行程序會發現返回的結果都是前序遍歷的結果。爲什麼會這樣呢？</p>
-<p>我們再來重新回顧一下中序&#x2F;前序&#x2F;後序遍歷的遞歸實現，看看問題出在哪裏。首先在遞歸思想當中，將整個問題歸納爲幾個重複的子過程，將這個過程封裝爲函數重複調用。以中序中序遍歷爲例，它可以看做 L（中序遍歷的左半部分）+ M（根結點）+ R（中序遍歷的右半部分）。一般解釋爲先遍歷左半部分，然後再遍歷根結點，再遍歷右半部分。這種解釋雖然雖然正確，但是含混不清。必須指出的是，這種先後順序是指時間上的順序。我們來看中序遍歷的遞歸實現</p>
-<pre><code class="C++"> void traversal(TreeNode* cur, vector&lt;int&gt;&amp; res) &#123;
-    if (cur == nullptr) return; // 終止
-    traversal(cur-&gt;left, res);  // 左子樹
-    res.push_back(cur-&gt;val);    // 中間結點
-    traversal(cur-&gt;right, res); // 右子樹
 &#125;
 </code></pre>
-<p>在一次調用<code>traversal</code>當中，如果沒有遇到終止條件，<code>traversal(cur-&gt;left, res);</code>執行完成時，L就已經完成了，然後再添加M，再執行<code>traversal(cur-&gt;left, res);</code>時R也全部完成了，最終結果就是L+M+R。然後我們再來看一開始前序遍歷的非遞歸實現的循環部分：</p>
-<pre><code class="C++">while (!st.empty()) &#123;
-    node = st.top(); st.pop();
-    res.push_back(node-&gt;val);           //1
-    if (node-&gt;right) st.push(node-&gt;right);  //2
-    if (node-&gt;left)  st.push(node-&gt;left);   //3
-&#125;
-</code></pre>
-<p>這個循環記錄了每次循環中從棧中彈出的元素，也意味着，無論如何調換語句1，2，3的順序，這次循環只會記錄此次的根結點，而左右子結點只會在後面的循環當中被記錄，根結點訪問時間先於左右子結點，故而無論如何調換順序都只會得到前序遍歷。所以試圖實現中序遍歷的話，要確保訪問記錄根結點M的時候，L已經完成遍歷，訪問M之後當然就是只剩下R的遍歷。</p>
-<p>無論是遞歸實現還是非遞歸實現，樹的遍歷過程都可以視爲一個深度優先搜索（DFS）的過程。爲了實現中序遍歷，我們必須顯示地執行完其左邊的遍歷過程，而非將所有結點都不分左右地放入棧中。例如上述的中序遍歷的非遞歸實現，每次從棧中彈出的結點，處理上都是相同的，我們也無從判斷其在遍歷過程當中所處的位置，不能區分左子樹和右子樹，所以就不能在合適的時機記錄中序遍歷的結點。中序遍歷的非遞歸實現如下：</p>
-<pre><code class="C++">vector&lt;int&gt; inorderTraversal(TreeNode* root) &#123;
-    stack&lt;TreeNode *&gt; stk;
-    vector&lt;int&gt; res;
-    TreeNode * cur = root;
-    while(!stk.empty() || cur)&#123;
-        while(cur)&#123;      //最左深度優先，全部壓入棧中
-            stk.push(cur);
-            cur = cur-&gt;left;
+<p>假設數組nums1和nums2的長度分別爲N和M，在滑動兩個數組的時候可以發現，start1和start2的取值存在兩種狀況，一種是start1固定爲0，而start2的取值爲0<del>M；第二種情況則是start2爲0，而start1的取值是0</del>N。這樣我們就可以很容易的實現求最長重複子數組：</p>
+<pre><code class="C++">class Solution &#123;
+public:
+    int findLength(vector&lt;int&gt;&amp; nums1, vector&lt;int&gt;&amp; nums2) &#123;
+        int res = 0, n = nums1.size(), m = nums2.size();
+        for(int i = 0; i &lt; n; ++i)&#123;
+            res = max(res, maxLength(nums1,i,nums2,0));
         &#125;
-        if(!stk.empty())&#123; 
-            cur = stk.top(); stk.pop(); //此時出棧的元素
-            res.push_back(cur-&gt;val);    //此時其左子樹已經全部遍歷完成
-            cur = cur-&gt;right;           //壓入右子樹
+        for(int i = 0; i &lt; m; ++i)&#123;
+            res = max(res, maxLength(nums1,0,nums2,i));
         &#125;
+        return res;
     &#125;
-    return res;
-&#125;
-</code></pre>
-<p>上面我們說到，其實三種遍歷都是DFS，所以前序遍歷也能應用上面的代碼，只不過需要改變記錄結果的位置。中序遍歷記錄的時機是其左邊所有結點都已經出棧的時候，而前序遍歷則是記錄在每個結點入棧的時候，所以代碼實現如下：</p>
-<pre><code class="C++">vector&lt;int&gt; inorderTraversal(TreeNode* root) &#123;
-    stack&lt;TreeNode *&gt; stk;
-    vector&lt;int&gt; res;
-    TreeNode * cur = root;
-    while(!stk.empty() || cur)&#123;
-        while(cur)&#123;     
-            stk.push(cur);
-            res.push_back(cur-&gt;val);   //此時記錄可以保證其子孫結點都出現在cur的後面
-            cur = cur-&gt;left;
+    int maxLength(vector&lt;int&gt;&amp; nums1, int start1, vector&lt;int&gt;&amp; nums2, int start2)&#123;
+        int res = 0;
+        int cur = 0;
+        int i = 0;
+        while(start1 + i &lt; nums1.size() &amp;&amp; start2 + i &lt; nums2.size())&#123;
+            if(nums1[start1+i] == nums2[start2+i])++cur;
+            else cur = 0;
+            res = max(res,cur);
+            ++i;
         &#125;
-        if(!stk.empty())&#123; 
-            cur = stk.top(); stk.pop();  
-            cur = cur-&gt;right;           
-        &#125;
+        return res;
     &#125;
-    return res;
-&#125;
+&#125;;
 </code></pre>
-<p>那麼後序遍歷是如何實現呢？我們知道前序遍歷是M+L+R，其實我們將前序遍歷的最左深度優先改爲最右深度優先，得到的序列將是M+R+L。同時我們也知道後序遍歷爲L+R+M，正好和M+R+L逆序，所以後序遍歷可以這樣實現：</p>
-<pre><code class="C++">vector&lt;int&gt; inorderTraversal(TreeNode* root) &#123;
-    stack&lt;TreeNode *&gt; stk;
-    vector&lt;int&gt; res;
-    TreeNode * cur = root;
-    while(!stk.empty() || cur)&#123;
-        while(cur)&#123;     
-            stk.push(cur);
-            cur = cur-&gt;right;  //最左改成最右
-            res.push_back(cur-&gt;val); 
+<p>在上述方法當中，我們可以知道兩個數組的重疊區域的長度先是從0遞增到<code>min(N,M)</code>，然後再遞減爲0；於是乎就很可能出現這樣一種情況，既先前所求到的最長重複子數組的長度會大於當前的數組重疊區域的長度，代表當前和後序的搜索都是不必要的了，即可以直接終止循環，返回結果。</p>
+<pre><code class="C++">class Solution &#123;
+public:
+    int findLength(vector&lt;int&gt;&amp; nums1, vector&lt;int&gt;&amp; nums2) &#123;
+        int res = 0, n = nums1.size(), m = nums2.size(), len= 0;
+        for(int i = 0; i &lt; n; ++i)&#123;
+            res = max(res, maxLength(nums1,i,nums2,0));
         &#125;
-        if(!stk.empty())&#123; 
-            cur = stk.top(); stk.pop();   
-            cur = cur-&gt;left;           
+        for(int i = 0; i &lt; m; ++i)&#123;
+            len = min(n,m-i);
+            if(len&lt;= res)break;
+            res = max(res, maxLength(nums1,0,nums2,i));
         &#125;
+        return res;
     &#125;
-    reverse(res.begin(), res.end()); //翻轉
-    return res;
-&#125;
+    int maxLength(vector&lt;int&gt;&amp; nums1, int start1, vector&lt;int&gt;&amp; nums2, int start2)&#123;
+        int res = 0;
+        int cur = 0;
+        int i = 0;
+        while(start1 + i &lt; nums1.size() &amp;&amp; start2 + i &lt; nums2.size())&#123;
+            if(nums1[start1+i] == nums2[start2+i])++cur;
+            else cur = 0;
+            res = max(res,cur);
+            ++i;
+        &#125;
+        return res;
+    &#125;
+&#125;;
 </code></pre>
-<p>至此三種遍歷的非遞歸實現得到了一種統一的寫法。</p>
+<p>時間複雜度： <code>O(M+N) * min(M,N)</code></p>
+<p>空間複雜度: <code>O(1)</code></p>
+<h3 id="動態規劃"><a href="#動態規劃" class="headerlink" title="動態規劃"></a>動態規劃</h3><p>在滑動窗口當中，兩個數組中的元素需要經過重複的比較。在這種需要減少重複步驟，可以利用一個二維數組DP來記錄中間狀態。<code>DP[i][j]</code>代表以nums1的第i位，以及nums2的第j位爲末位的重複子數組的長度，狀態轉移公式爲</p>
+<pre><code>if nums1[i] == nums2[j] : dp[i][j] = dp[i-1]dp[j-1] + 1;
+else:                     dp[i][j] = 0;
+</code></pre>
+<p>所以實現如下：</p>
+<pre><code class="C++">class Solution &#123;
+public:
+    int findLength(vector&lt;int&gt;&amp; nums1, vector&lt;int&gt;&amp; nums2) &#123;
+        int n = nums1.size(), m = nums2.size();
+        vector&lt; vector&lt;int&gt; &gt; dp(n, vector&lt;int&gt;(m,0)); 
+        int res = 0;
+        for(int i = 0; i &lt; n; ++i)&#123;
+            for(int j = 0; j &lt; m; ++j)&#123;
+                if(nums1[i] == nums2[j])&#123;
+                    dp[i][j] += 1;
+                    if(i&gt;0 &amp;&amp; j &gt;0)dp[i][j] += dp[i-1][j-1]; //注意邊界
+                &#125;
+                res = max(res, dp[i][j]);
+            &#125;
+        &#125;
+        return res;
+    &#125;
+&#125;;
+</code></pre>
+<p>時間複雜度： <code>O(N * M)</code></p>
+<p>空間複雜度：<code>O(N * M)</code></p>
+<p>在上述循環當中，我們可以發現每次循環<code>DP[i][:]</code>只與<code>DP[i-1][:]</code>有關。且<code>DP[i][:]</code>與<code>DP[i-1][:]</code>長度相同，<code>DP[i][j]</code>也只與<code>DP[i-1][j-1]</code>有關。那我們可以只用一個一位數組dp來替換原來的二維數組。</p>
+<p>即：</p>
+<pre><code>if nums1[i] == nums2[j] : dp[j-1] + 1;
+else:                     dp[j] = 0;
+</code></pre>
+<p>且注意，由於沒有i，所以沒辦法檢查邊界。故而必須在dp數組添加一位，使得原來<code>i==0</code>的時候使<code>dp[i-1][*]</code>不會越界。在一維dp數組當中，<code>DP[j]</code>代表以以nums1的第i-1位，以及nums2的第j-1位爲末位的重複子數組的長度.</p>
+<p>實現方法如下：</p>
+<pre><code class="C++">class Solution &#123;
+public:
+    int findLength(vector&lt;int&gt;&amp; nums1, vector&lt;int&gt;&amp; nums2) &#123;
+        int n = nums1.size(), m = nums2.size();
+        vector&lt;int&gt;  dp(m+1,0); 
+        int res = 0;
+        for(int i = 1; i &lt;= n; ++i)&#123;
+            for(int j = m; j &gt; 0; --j)&#123;
+                if(nums1[i-1] == nums2[j-1])
+                    dp[j] = 1 + dp[j-1];
+                else&#123;
+                    dp[j] = 0;
+                &#125;
+                res = max(res, dp[j]);
+            &#125;
+        &#125;
+        return res;
+    &#125;
+&#125;;
+</code></pre>
+<h3 id="哈希-二分查找"><a href="#哈希-二分查找" class="headerlink" title="哈希+二分查找"></a>哈希+二分查找</h3><p>二分查找的思想如下，既如果兩個數組的最長重複子數組的長度爲k，則必然存在<code>len &lt; k</code>的重複子數組，而<code>len &gt; k</code>的重複子數組必然不存在，這樣就可以利用二分法來查找這個k。</p>
+<p>但是如何判斷nums1和nums2是否存在長度爲len的重複子數組呢。一個簡單的方法是將nums1的所有長度爲len的子數組放入到哈希表當中。然後再遍歷nums2的所有長度爲len的子數組，並此子數組查詢哈希表當中的是否存在。但是我們並不能將一個數組直接放入到哈希表當中，一種方法是將數組轉爲字符串，第二種方法是利用Rabin-Karp 算法，表達式如下，</p>
+<p>$hash(nums) &#x3D; \displaystyle \sum^{len(nums)-1}_{i &#x3D; 0}{base ^{len(nums)-(i+1)} \times nums[i]}$</p>
+<p>看上去蠻複雜的，其實非常簡單。就是將數組nums視爲base進制數，然後求其十進制的值。但是考慮最後取得的值會非常大，所以必須對結果進行去模。然而這樣有概率發生哈希碰撞，所以我們還是採用將數組轉化爲字符串的辦法。</p>
+<pre><code class="C++">class Solution &#123;
+public:
+    bool check(string &amp; nums1, string&amp; nums2, int len)&#123;
+        unordered_set&lt;string&gt; s;
+        for(int i = 0; i+len&lt;= nums1.size(); ++i)&#123;
+            s.insert(nums1.substr(i,len));
+        &#125;
+        for(int i = 0; i+len&lt;=nums2.size(); ++i)&#123;
+            if(s.count(nums2.substr(i,len)))return true;
+        &#125;
+        return false;
+    &#125;
+    string toString(vector&lt;int&gt; &amp; nums)&#123;
+        string res;
+        for(auto&amp; n:nums)
+            res += char(n);
+        return res;
+    &#125;
+    int findLength(vector&lt;int&gt;&amp; nums1, vector&lt;int&gt;&amp; nums2) &#123;
+        string n1 = toString(nums1), n2 = toString(nums2);
+        int left = 0, right = min(nums1.size(),nums2.size());
+        while(left &lt; right)&#123;
+            int mid = (left + right+1) / 2;
+            if(check(n1,n2,mid))&#123;
+                left = mid;
+            &#125;else&#123;
+                right = mid-1;
+            &#125;
+        &#125;
+        return right;
+    &#125;
+&#125;;
+</code></pre>
+<p>時間複雜度：<code>log(min(N,M)) * (M + N)</code></p>
+<p>空間複雜度：<code>O(N)</code></p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 轉載請聲明來源，歡迎評論區指正 </span>
